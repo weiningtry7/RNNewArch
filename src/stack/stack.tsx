@@ -8,6 +8,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileScreen from '../screens/profile/ProfileScreen';
 import { Text, PlatformPressable } from '@react-navigation/elements';
 import { useLinkBuilder, useTheme } from '@react-navigation/native';
+import HomeScreen from '../screens/home/HomeScreen';
+import PostListScreen from '../screens/post/PostListScreen';
 
 function MyTabBar({ state, descriptors, navigation }) {
   const { colors } = useTheme();
@@ -74,17 +76,12 @@ const MyTabs = createBottomTabNavigator({
     headerShown: false
   }
 });
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+
 
 const RootStack = createNativeStackNavigator({
   screens: {
-    Home: MyTabs,
+    HomeTab: MyTabs,
+    PostListScreen: PostListScreen
   },
 });
 
