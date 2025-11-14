@@ -44,7 +44,7 @@ function recombinePostData(data: PostsData) {
                     selfOperationMap[postId] = selfOperation
                 }
 				//用作FlashList缓存池标识符
-                        post.cellIdentifier = cellIdentifierForPost(post)
+				post.cellIdentifier = cellIdentifierForPost(post)
     });
     data.postStatMap = postStatMap
     data.selfOperationMap = selfOperationMap

@@ -1,8 +1,10 @@
 import { FlashList } from "@shopify/flash-list";
-import { View } from "react-native";
+import { FlatList, View } from "react-native";
 import { getPostListData } from "../mock/recommend";
 import { useEffect, useState } from "react";
 import { PostListCell } from "./PostListCell";
+import { usePostStats } from "../store/usePostStats";
+import { useSelfOperations } from "../store/useSelfOperations";
 
 export function PostListView() {
     const [data, setData] = useState([]);
@@ -14,7 +16,13 @@ export function PostListView() {
             .then((res: any) => {
                 console.log("++++++++res+++++++++")
                 console.log(res)
-                setData(res.posts)
+                let arr: any[] = [];
+                for (let index = 0; index < 10; index++) {
+                   arr = arr.concat(res.posts);
+                }
+                setData(arr)
+                usePostStats.getState().setStats(res.postStatMap)
+                useSelfOperations.getState().setOperations(res.selfOperationMap)
             })
     }
     const renderItem = ({ item, index }) => {
