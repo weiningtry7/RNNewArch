@@ -4,7 +4,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 https://img.feria.eu.org/dkvj6k.gif
 
-## Tips 1: 引入FlahsList
+## Tips 1: 引入FlashList
 
 替换FlatList为**FlahsList**，在该项目100条帖子数据的测试中，FlashList表现明显优于FlatList，FlashList采用的是**缓存池重用Cell**的技术，不同于FlatList的mount和unmount，不需要重新创建组件，而是重用缓存池的Cell，**采用新的数据源将页面更新**。
 
