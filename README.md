@@ -1,97 +1,32 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# react-native0.82版本保持UI和JS帧率60
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+https://img.feria.eu.org/dkvj6k.gif
 
-## Step 1: Start Metro
+## Tips 1: 引入FlahsList
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
+替换FlatList为**FlahsList**，在该项目100条帖子数据的测试中，FlashList表现明显优于FlatList，FlashList采用的是**缓存池重用Cell**的技术，不同于FlatList的mount和unmount，不需要重新创建组件，而是重用缓存池的Cell，**采用新的数据源将页面更新**。
 
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+# using Yarn
+yarn add @shopify/flash-list
 ```
 
-## Step 2: Build and run your app
+## Tips 2: 引入babel-plugin-react-compiler
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
+React组件重渲染机制中，父组件重渲染会导致**所有子组件重渲染**，之前要花很多精力来使用useMemo、useCallback、React.memo来优化不需要刷新的组件。现在引入react-compiler就可以很好的达到这个目的
 
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+# using Yarn
+yarn add -D babel-plugin-react-compiler@latest
 ```
 
-### iOS
+### Tips 3: 引入react-native-fast-image
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+不同于react-native提供的Image组件，FastImage原生层都是各个平台的老牌图片加载库( **[SDWebImage (iOS)](https://github.com/rs/SDWebImage)** and **[Glide (Android)](https://github.com/bumptech/glide)**)，**胜在内存的占用上**，该项目的100条帖子数据的测试中，FastImage占用RAM为235M，Image占用RAM为292M
 
 ```sh
-bundle install
+# using Yarn
+yarn add @d11/react-native-fast-image
 ```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.

@@ -125,7 +125,10 @@ export function ImagesGrid(props) {
         const imageData = images.slice(0, 3);
         return (
             <View style={{ flexDirection: 'row', columnGap: 6 }}>
-                {imageData.map((image) => <ThumnailImageView style={{ aspectRatio: 1, flex: 1, borderRadius: 6 }} url={image.url} />)}
+                {imageData.map((image, index) => <ThumnailImageView 
+                key={index}
+                style={{ aspectRatio: 1, flex: 1, borderRadius: 6 }} url={image.url} 
+                />)}
             </View>
         )
     }

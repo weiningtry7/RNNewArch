@@ -11,11 +11,11 @@ function Header() {
 }
 function TestReactComplier() {
   const [count, setCount] = useState(0);
-  console.log('>>>TestReactComplier rendered <<<');
+  console.log('------TestReactComplier rendered-----');
   return (
     <View>
       <Header />  
-      <Text>Count zzzz: {count}</Text>
+      <Text>Count: {count}</Text>
       <Button title="Increment" onPress={() => setCount(c => c + 1)} />
     </View>
   );
