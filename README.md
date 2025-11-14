@@ -1,6 +1,6 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# react-native0.82版本保持UI和JS帧率60
+# react-native0.82版本列表快速滑动保持UI帧率60FPS
 
 https://img.feria.eu.org/dkvj6k.gif
 

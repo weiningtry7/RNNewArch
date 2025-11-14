@@ -3,9 +3,11 @@ import {
     View,
     Dimensions,
     Image,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    StyleSheet
 } from 'react-native'
 import _ from 'lodash'
+import { useMappingHelper } from '@shopify/flash-list';
 import FastImage from '@d11/react-native-fast-image';
 import { useMemo } from 'react';
 import { usePost } from '../hooks/usePost';
@@ -21,8 +23,8 @@ export function UserHeader(props: any) {
     const { avatar, nickname } = user
     return (
         <View style={{ flexDirection: 'row' }}>
-            <FastImage source={{ uri: avatar }} style={{ height: 30, width: 30, borderRadius: 15 }} />
-            <Text style={{ fontSize: 15, color: '#333333' }}>{nickname}</Text>
+            <FastImage source={{ uri: avatar }} style={styles.avatar} />
+            <Text style={styles.nickname}>{nickname}</Text>
         </View>
     )
 }
@@ -37,10 +39,8 @@ function ContentText(props) {
     }, [props.content])
     return (
         <View style={{ flex: 1, marginTop: 9 }}>
-            {/* <Text style={[styles.subject, ]} >{props.postId}</Text> */}
-            <Text style={{ color: '#333333', fontSize: 16, lineHeight: 25 }} >{props.subject}</Text>
-            {/* {contentText && <EmojiTextView  style={[styles.content, ]} numberOfLines={2}>{contentText}</EmojiTextView>} */}
-            <Text style={{ color: '#333333', marginTop: 5, fontSize: 15, lineHeight: 21 }}>{contentText}</Text>
+            <Text style={styles.subject} >{props.subject}</Text>
+            <Text style={styles.content}>{contentText}</Text>
         </View>
     );
 }
@@ -62,7 +62,7 @@ function LikeButton(props) {
         <TouchableWithoutFeedback onPress={toggleLike}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Image source={source} />
-                <Text style={{ color: '#B1B8C1', marginLeft: 3, textAlign: 'left' }}>{likeNum}</Text>
+                <Text style={{ color: liked ? '#F7A040' : '#B1B8C1', marginLeft: 3, textAlign: 'left' }}>{likeNum}</Text>
             </View>
         </TouchableWithoutFeedback>
     )
@@ -73,7 +73,7 @@ function ThumnailImageView(props) {
     const uri = `${url}?imageView2/2/w/1080/h/16000/q/80/format/webp`
     return (
         <FastImage source={{ uri: uri }}
-            style={[{ }, style]} />
+            style={[{}, style]} />
     )
 }
 
@@ -107,6 +107,9 @@ function calculateElementSize(length: number, imageData?: any, attribute?: any) 
     return { imageViewWidth: imageViewWidth, imageViewHeight: imageViewHeight }
 }
 export function ImagesGrid(props) {
+    const { getMappingKey } = useMappingHelper();
+
+
     const { images } = props;
     if (_.isEmpty(images)) {
         return <View />
@@ -125,9 +128,9 @@ export function ImagesGrid(props) {
         const imageData = images.slice(0, 3);
         return (
             <View style={{ flexDirection: 'row', columnGap: 6 }}>
-                {imageData.map((image, index) => <ThumnailImageView 
-                key={index}
-                style={{ aspectRatio: 1, flex: 1, borderRadius: 6 }} url={image.url} 
+                {imageData.map((image, index) => <ThumnailImageView
+                    key={getMappingKey(image.url, index)}
+                    style={{ aspectRatio: 1, flex: 1, borderRadius: 6 }} url={image.url}
                 />)}
             </View>
         )
@@ -156,7 +159,7 @@ export function PostListCell(props) {
         cover
     } = post
     return (
-        <View style={{ flex: 1, marginHorizontal: 12, paddingHorizontal: 10, borderRadius: 6, paddingTop: 10, marginTop: 10, paddingVertical: 4, backgroundColor: '#fff' }}>
+        <View style={styles.cellContainer}>
             <View style={{ flexDirection: 'row' }}>
                 <UserHeader user={user} />
             </View>
@@ -168,3 +171,37 @@ export function PostListCell(props) {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    cellContainer: { 
+        flex: 1, 
+        marginHorizontal: 12, 
+        paddingHorizontal: 10, 
+        borderRadius: 6, 
+        paddingTop: 10, 
+        marginTop: 10, 
+        paddingVertical: 4, 
+        backgroundColor: '#fff' 
+    },
+    subject: { 
+        color: '#333333', 
+        fontSize: 16, 
+        lineHeight: 25 
+    },
+    content: { 
+        color: '#333333', 
+        marginTop: 5, 
+        fontSize: 15, 
+        lineHeight: 21 
+    },
+    avatar: { 
+        height: 30, 
+        width: 30, 
+        borderRadius: 15 
+    },
+    nickname: { 
+        fontSize: 15, 
+        color: '#333333', 
+        marginLeft: 5 
+    }
+})
