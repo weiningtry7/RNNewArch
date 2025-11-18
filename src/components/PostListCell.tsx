@@ -158,6 +158,7 @@ export function PostListCell(props) {
         prime,
         cover
     } = post
+    console.log('post list cell render')
     return (
         <View style={styles.cellContainer}>
             <View style={{ flexDirection: 'row' }}>

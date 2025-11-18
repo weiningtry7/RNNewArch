@@ -22,7 +22,7 @@ export const useSelfOperations = create<SelfOperationsState>()(
 
         const willLike = !op.liked;
         const delta = willLike ? 1 : -1;
-        // 1. 乐观更新 selfOperation
+        // 1. 更新 selfOperation
         set(
           produce((draft: Draft<SelfOperationsState>) => {
             if (draft.operations[postId]) {

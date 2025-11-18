@@ -26,7 +26,7 @@ export interface Post {
 }
 
 export type PostStat = {
-    commentNum: number
+    commentNum?: number
     likeNum: number
     compositeState?: number
     relayNum?: number

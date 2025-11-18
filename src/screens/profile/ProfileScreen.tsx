@@ -11,9 +11,9 @@ function Header() {
 }
 function TestReactComplier() {
   const [count, setCount] = useState(0);
-  console.log('------TestReactComplier rendered-----');
+  console.log('--------TestReactComplier rendered-------');
   return (
-    <View>
+    <View style={{}}>
       <Header />  
       <Text>Count: {count}</Text>
       <Button title="Increment" onPress={() => setCount(c => c + 1)} />
@@ -21,6 +21,7 @@ function TestReactComplier() {
   );
 }
 export default function ProfileScreen() {
+    console.log('--------ProfileScreen rendered-------');
     return (
         <View style={{ flex: 1}}>
             <TestReactComplier/>
