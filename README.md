@@ -33,7 +33,7 @@ yarn add @d11/react-native-fast-image
 
 ### Tips 4: 引入zustand作为状态管理库
 
-列表项的操作按钮例如点赞功能，常规hooks的写法需要**结合props和state**。可以使用zustand作为状态管理，减少**心智负担和代码量**，而且可以减少不必要的重复渲染。
+列表项的操作按钮例如点赞功能，常规hooks的写法需要**结合props和state**。可以使用zustand作为状态管理，**维护所有帖子的状态表，通过帖子id取出状态**。减少**心智负担和代码量**，而且可以减少不必要的重复渲染。
 
 ```sh
 # using Yarn
