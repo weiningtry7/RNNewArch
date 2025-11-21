@@ -57,7 +57,7 @@ function BottomToolbar(props) {
 function LikeButton(props) {
     const { liked, likeNum, toggleLike } = usePost(props.postId);
     const source = liked ? LikedIcon : LikeIcon
-
+    console.log(`-------${props.postId}的LikeButton重新渲染-------`)
     return (
         <TouchableWithoutFeedback onPress={toggleLike}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
