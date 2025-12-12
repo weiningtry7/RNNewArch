@@ -2,7 +2,9 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # react-native0.82版本列表快速滑动保持UI帧率60FPS
 
-![](https://img.feria.eu.org/dkvj6k.gif)
+效果实例图
+
+![](https://github.com/weiningtry7/RNNewArch/blob/master/dkvj6k.gif?raw=true)
 
 ## Tips 1: 引入FlashList
 
