@@ -1,7 +1,7 @@
 import { FlashList } from "@shopify/flash-list";
 import { FlatList, View } from "react-native";
 import { getPostListData } from "../mock/recommend";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { PostListCell } from "./PostListCell";
 import { usePostStats } from "../store/usePostStats";
 import { useSelfOperations } from "../store/useSelfOperations";
@@ -25,11 +25,11 @@ export function PostListView() {
                 useSelfOperations.getState().setOperations(res.selfOperationMap)
             })
     }
-    const renderItem = ({ item, index }) => {
+    const renderItem = useCallback(({ item, index }) => {
         return (
             <PostListCell post={item} />
         )
-    }
+    }, []) 
     return (
         <FlashList
             data={data}
