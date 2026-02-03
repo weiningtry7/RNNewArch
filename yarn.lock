@@ -1510,13 +1510,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotta/react-native-imagepicker@npm:0.1.3":
-  version: 0.1.3
-  resolution: "@hotta/react-native-imagepicker@npm:0.1.3"
+"@hotta/react-native-imagepicker@npm:0.1.4":
+  version: 0.1.4
+  resolution: "@hotta/react-native-imagepicker@npm:0.1.4"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10c0/d2e48763c44da1021989f5f276af98d29fc6764eadffa7710eeb53ebee2bca3a5aa9d798ba6a576627a548a31416b13e86312bd713ab8595abbbafb65bc775b6
+  checksum: 10c0/3044ba4788780cd3923e0111e03581d3ed71597bf266d26c7ff8c891d9580afb0ca52dc5793864faccfb40438686484ae1782b734e96947fe8f9e09ca6c30768
   languageName: node
   linkType: hard
 
@@ -2925,7 +2925,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.25.3"
     "@babel/runtime": "npm:^7.25.0"
     "@d11/react-native-fast-image": "npm:^8.13.0"
-    "@hotta/react-native-imagepicker": "npm:0.1.3"
+    "@hotta/react-native-imagepicker": "npm:0.1.4"
     "@react-native-community/cli": "npm:^20.0.2"
     "@react-native-community/cli-platform-android": "npm:20.0.0"
     "@react-native-community/cli-platform-ios": "npm:20.0.0"

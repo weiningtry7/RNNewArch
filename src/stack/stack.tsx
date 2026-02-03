@@ -10,6 +10,7 @@ import { Text, PlatformPressable } from '@react-navigation/elements';
 import { useLinkBuilder, useTheme } from '@react-navigation/native';
 import HomeScreen from '../screens/home/HomeScreen';
 import PostListScreen from '../screens/post/PostListScreen';
+import ImagePickScreen from '../screens/image/ImagePickScreen';
 
 function MyTabBar({ state, descriptors, navigation }) {
   const { colors } = useTheme();
@@ -81,7 +82,8 @@ const MyTabs = createBottomTabNavigator({
 const RootStack = createNativeStackNavigator({
   screens: {
     HomeTab: MyTabs,
-    PostListScreen: PostListScreen
+    PostListScreen: PostListScreen,
+    ImagePickScreen: ImagePickScreen
   },
 });
 

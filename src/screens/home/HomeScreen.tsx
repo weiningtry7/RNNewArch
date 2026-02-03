@@ -26,7 +26,8 @@ export default function HomeScreen() {
   }
   const data = useMemo(() => {
     return [
-      {'title': '帖子列表', 'screen': 'PostListScreen'}
+      {'title': '帖子列表', 'screen': 'PostListScreen'},
+      {'title': '图片选取', 'screen': 'ImagePickScreen'}
     ]
   }, [])
   return (
