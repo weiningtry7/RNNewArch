@@ -2,7 +2,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # react-native0.82版本列表快速滑动保持UI帧率60FPS
 
-效果实例图，模拟器并且是Dev模式下。Release模式效果会更优
+效果实例图，在模拟器并且是Dev模式下运行的，Release模式效果会更优。
 
 ![](https://github.com/weiningtry7/RNNewArch/blob/master/dkvj6k.gif?raw=true)
 
